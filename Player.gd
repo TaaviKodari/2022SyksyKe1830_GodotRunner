@@ -1,6 +1,8 @@
 extends KinematicBody
 
-var run_speed : float = 8.0
+var run_speed : float
+var gravity :float
+var jump_speed : float
 
 var time : float = 0.0
 var step_freq : float = 2.0 #kuinka usein
@@ -9,10 +11,10 @@ var step_tilt : float = 8.0 # degress: asteet
 
 onready var body_hinge = $BodyHinge
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+func setup_jump(length : float, height : float, speed: float):
+	run_speed = speed
+	gravity = 8.0 * height * speed * speed / (length * length)
+	jump_speed = 4.0 * height * speed / length
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
