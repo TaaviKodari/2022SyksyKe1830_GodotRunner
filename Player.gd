@@ -4,12 +4,16 @@ var run_speed : float
 var gravity :float
 var jump_speed : float
 
+var sidestep_speed : float = 5.0
+var velocity := Vector3()
+
 var time : float = 0.0
 var step_freq : float = 2.0 #kuinka usein
 var step_height : float = 0.2 #kuinka korkealle maasta
 var step_tilt : float = 8.0 # degress: asteet
 
 onready var body_hinge = $BodyHinge
+
 
 func setup_jump(length : float, height : float, speed: float):
 	run_speed = speed
@@ -32,7 +36,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):
 		sideways -= 1.0 
 	
-	move_and_slide(Vector3(sideways * run_speed, 0 ,-run_speed))
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_speed
+	
+	velocity.y -= gravity * delta
+	velocity.x = sideways * sidestep_speed
+	velocity.z = -run_speed
+	
+	velocity = move_and_slide(velocity, Vector3.UP)
 
 
 
