@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fence.tscn" type="PackedScene" id=1]
+[ext_resource path="res://RoadBase.tscn" type="PackedScene" id=2]
+
+[node name="Road1" instance=ExtResource( 2 )]
+
+[node name="Obstacles" type="Spatial" parent="." index="1"]
+
+[node name="Fence" parent="Obstacles" index="0" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24003, 0.658791, -44.4594 )
+
+[node name="Fence2" parent="Obstacles" index="1" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55014, 0.658791, -37.5727 )
+
+[node name="Fence3" parent="Obstacles" index="2" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24328, 0.659, -30.678 )
+
+[node name="Fence4" parent="Obstacles" index="3" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24328, 0.659, -19.3363 )
+
+[node name="Fence5" parent="Obstacles" index="4" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90419, 0.659, -13.5199 )
+
+[node name="Fence6" parent="Obstacles" index="5" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51995, 0.659, -6.25226 )

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Models and Textures/wall.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5.52816, 2.5716, 0.733624 )
+
+[node name="Fence" type="Spatial"]
+
+[node name="wall" type="MeshInstance" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+mesh = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="wall"]
+collision_layer = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="wall/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.74748, 0 )
+shape = SubResource( 1 )
