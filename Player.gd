@@ -25,9 +25,10 @@ func setup_jump(length : float, height : float, speed: float):
 #	pass
 
 func _physics_process(delta):
-	body_hinge.translation.y = step_height * (1 + sin(2.0 * PI * step_freq * time))
-	body_hinge.rotation_degrees.z = step_tilt * sin(PI * step_freq *time)
-	time += delta
+	if is_on_floor():
+		body_hinge.translation.y = step_height * (1 + sin(2.0 * PI * step_freq * time))
+		body_hinge.rotation_degrees.z = step_tilt * sin(PI * step_freq *time)
+		time += delta
 	
 	var sideways : float = 0.0
 	
