@@ -13,6 +13,8 @@ var road_scenes = [
 
 onready var player = $Player
 onready var camera_pivot = $CameraPivot
+onready var game_over_screen : Control = $UI/GameOverScreen
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = true
@@ -49,3 +51,12 @@ func make_random_road() -> RoadBase:
 
 func _on_StartScreen_dismissed():
 	get_tree().paused = false
+
+
+func _on_Player_obstacle_hit():
+	get_tree().paused = true
+	game_over_screen.show()
+
+
+func _on_GameOverScreen_dismissed():
+	get_tree().reload_current_scene()
